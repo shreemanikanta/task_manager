@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="{% static 'users/css/register.css' %}">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-header">
+            <h2><i class="fas fa-user-plus"></i> Register</h2>
+            <p>Create your account to get started</p>
+        </div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <div class="input-wrapper">
+                    <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                    <i class="fas fa-envelope input-icon"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" class="form-input" placeholder="Create a password" required>
+                    <i class="fas fa-lock input-icon"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <div class="input-wrapper">
+                    <input type="text" id="first_name" class="form-input" placeholder="Enter your first name" required>
+                    <i class="fas fa-user input-icon"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <div class="input-wrapper">
+                    <input type="text" id="last_name" class="form-input" placeholder="Enter your last name" required>
+                    <i class="fas fa-user input-icon"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="register-btn" id="registerBtn">
+                <i class="fas fa-user-plus"></i> Create Account
+            </button>
+        </form>
+
+        <div id="msg" class="message"></div>
+
+        <div class="divider">
+            <span>Already have an account?</span>
+        </div>
+
+        <a href="/users/login_page/" class="login-link">
+            <i class="fas fa-sign-in-alt"></i> Sign In Instead
+        </a>
+    </div>
+
+  <script src="{% static 'users/js/register.js' %}"></script>
+</body>
+</html>

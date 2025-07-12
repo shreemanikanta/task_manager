@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Tasks</title>
+  <link rel="stylesheet" href="{% static 'task/css/tasks.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tasks"></i> My Task Manager</h1>
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </header>
+
+        <main>
+            <section class="create-task">
+                <h2><i class="fas fa-plus-circle"></i> Create New Task</h2>
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="newTitle">Task Title</label>
+                        <input type="text" id="newTitle" class="form-input" placeholder="Enter task title..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newDescription">Description</label>
+                        <textarea id="newDescription" class="form-input form-textarea" placeholder="Enter task description..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="newDeadline">Deadline</label>
+                        <input type="datetime-local" id="newDeadline" class="form-input" required>
+                    </div>
+                    <button type="submit" id="createTaskBtn" class="create-btn">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </form>
+            </section>
+
+            <section class="tasks-container">
+                <div class="task-bucket" id="upcoming">
+                    <div class="bucket-header">
+                        <i class="fas fa-calendar-alt bucket-icon"></i>
+                        <h3 class="bucket-title">Upcoming</h3>
+                        <span class="task-count" id="upcomingCount">0</span>
+                    </div>
+                    <ul class="task-list"></ul>
+                    <div class="empty-state" style="display: none;">
+                        <i class="fas fa-calendar-check"></i>
+                        <p>No upcoming tasks</p>
+                    </div>
+                </div>
+
+                <div class="task-bucket" id="completed">
+                    <div class="bucket-header">
+                        <i class="fas fa-check-circle bucket-icon"></i>
+                        <h3 class="bucket-title">Completed</h3>
+                        <span class="task-count" id="completedCount">0</span>
+                    </div>
+                    <ul class="task-list"></ul>
+                    <div class="empty-state" style="display: none;">
+                        <i class="fas fa-trophy"></i>
+                        <p>No completed tasks yet</p>
+                    </div>
+                </div>
+
+                <div class="task-bucket" id="missed">
+                    <div class="bucket-header">
+                        <i class="fas fa-exclamation-triangle bucket-icon"></i>
+                        <h3 class="bucket-title">Missed</h3>
+                        <span class="task-count" id="missedCount">0</span>
+                    </div>
+                    <ul class="task-list"></ul>
+                    <div class="empty-state" style="display: none;">
+                        <i class="fas fa-clock"></i>
+                        <p>No missed tasks</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+  <script src="{% static 'task/js/tasks.js' %}"></script>
+</body>
+</html>
