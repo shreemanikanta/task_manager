@@ -7,17 +7,17 @@ Plus, it includes an AI-powered feature to automatically generate smart task sum
 
 ## ⚙️ Tech Stack
 
-    * **Backend**: Django, Django REST Framework (DRF)
+    **Backend**: Django, Django REST Framework (DRF)
 
-    * **Real-time**: Django Channels, Redis, Daphne
+    **Real-time**: Django Channels, Redis, Daphne
 
-    * **Async Tasks**: Celery
+    **Async Tasks**: Celery
 
-    * **Database**: SQLite (dev) or PostgreSQL (prod)
+    **Database**: SQLite (dev) or PostgreSQL (prod)
 
-    * **Containerization**: Docker & Docker Compose
+    **Containerization**: Docker & Docker Compose
 
-    * **AI**: OpenAI / OpenRouter for natural language task summaries
+    **AI**: OpenAI / OpenRouter for natural language task summaries
 
 ## 📌 API Endpoints
 
