@@ -191,24 +191,61 @@ How to use it:
 
 # 1. Clone repo
 ```
-git clone <your-repo-url>
-cd <your-project>
+git clone https://github.com/shreemanikanta/task_manager.git
+cd task_management
 ```
 
-# 2. Build and run Docker
-```docker-compose up --build```
+# 2. Create & Activate a Virtual Environment
+```
+python -m venv venv
+source venv/bin/activate
+```
 
-# 3. Apply migrations
-```docker-compose exec daphne python manage.py migrate```
+# 3. Install Python Requirements
+```
+pip install -r requirements.txt
+```
 
-# 4. Create superuser
-```docker-compose exec daphne python manage.py createsuperuser```
+# 4. Apply Migrations
+```
+python manage.py migrate
+```
 
-# 5. Collect static files
-```docker-compose exec daphne python manage.py collectstatic --noinput```
+# 5. Create superuser
+```
+python manage.py createsuperuser
+```
 
-# 6. Access:
-# API: http://127.0.0.0:port/
+# 6. Collect static files
+```
+python manage.py collectstatic --noinput
+```
+
+# 7. Run Daphne ASGI Server
+Run Daphne to serve your Django app with Channels:
+```
+daphne -b 0.0.0.0 -p <port> task_management.asgi:application
+```
+
+# 8. Access:
+## ✅ Project URLs
+
+    Frontend: http://127.0.0.1:port/
+
+    Admin: http://127.0.0.1:port/admin/
+
+    API Example: http://127.0.0.1:port/task/tasks/
+
+# 9. For Celery
+* Make sure Redis is running locally for Channels and Celery.
+
+* Start Celery worker and Celery beat in separate terminals:
+
+```
+celery -A task_management worker --loglevel=info
+celery -A task_management beat --loglevel=info
+
+```
 
 ## 🔑 Environment Variables
 
