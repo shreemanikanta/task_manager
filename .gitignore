@@ -6,3 +6,8 @@ venv
 .vscode
 mediafiles/
 db.sqlite3
+staticfiles/
+nginx/
+Dockerfile
+docker-compose.yml
+task_management/celerybeat-schedule

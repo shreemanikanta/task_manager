@@ -101,6 +101,7 @@ document.getElementById("loginForm").onsubmit = async (e) => {
             
             localStorage.setItem("access_token", json.data.tokens.access);
             localStorage.setItem("refresh_token", json.data.tokens.refresh);
+            localStorage.setItem("user_id", json.data.id);
             
             showMessage("Login successful! Redirecting...", "success");
             
