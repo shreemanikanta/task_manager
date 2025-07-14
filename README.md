@@ -28,7 +28,7 @@ All APIs require JWT Authorization: Bearer <access_token> header.
 
 Response:
 
-{
+```{
   "status": 200,
   "message": "Successfully fetched",
   "data": [
@@ -41,6 +41,7 @@ Response:
     }
   ]
 }
+```
 
 ### ✅ 2. Get single task
 
@@ -48,7 +49,7 @@ Response:
 
 Response:
 
-{
+```{
   "status": 200,
   "message": "Successfully fetched",
   "data": {
@@ -59,6 +60,7 @@ Response:
     "status": "Upcoming"
   }
 }
+```
 
 ### ✅ 3. Create new task
 
@@ -66,15 +68,16 @@ Response:
 
 Request:
 
-{
+```{
   "title": "Prepare Presentation",
   "description": "Slides for the quarterly meeting",
   "deadline": "2025-07-15T12:00:00Z"
 }
+```
 
 Response:
 
-{
+```{
   "status": 201,
   "message": "Task created successfully.",
   "data": {
@@ -85,6 +88,7 @@ Response:
     "status": "Upcoming"
   }
 }
+```
 
 ### ✅ 4. Update task
 
@@ -92,13 +96,14 @@ Response:
 
 Request:
 
-{
+```{
   "is_complete": true
 }
+```
 
 Response:
 
-{
+```{
   "status": 200,
   "message": "Task updated successfully.",
   "data": {
@@ -106,6 +111,7 @@ Response:
     "status": "Completed"
   }
 }
+```
 
 ### ✅ 5. Delete task
 
@@ -113,30 +119,32 @@ Response:
 
 Response:
 
-{
+```{
   "status": 200,
   "message": "Task deleted successfully."
 }
-
+```
 ### ✅ 6. Generate Task Summary (AI)
 
 #### POST /task/generate_summary/
 
 Request:
 
-{
+```{
   "title": "Prepare a detailed marketing strategy for Q4"
 }
+```
 
 Response:
 
-{
+```{
   "status": 200,
   "message": "Summary generated successfully",
   "data": {
     "summary": "Draft a comprehensive plan covering social media ads, influencer outreach, and lead generation campaigns for Q4."
   }
 }
+```
 
 ## 🔔 WebSocket Notifications
 
@@ -144,14 +152,15 @@ Response:
 
     Your front-end connects to:
 
-    ws://<your_domain>/ws/tasks/<user_uuid>/
+    ```ws://<your_domain>/ws/tasks/<user_uuid>/```
 
 And listens for:
 
-    {
+    ```{
       "uuid": "123e4567-e89b-12d3-a456-426614174000",
       "status": "Missed"
     }
+    ```
 
 ## 🧠 AI Innovation Feature
 ### ✨ AI-Powered Task Summary
@@ -181,20 +190,22 @@ How to use it:
 ## ⚙️ Development Setup
 
 # 1. Clone repo
+```
 git clone <your-repo-url>
 cd <your-project>
+```
 
 # 2. Build and run Docker
-docker-compose up --build
+```docker-compose up --build```
 
 # 3. Apply migrations
-docker-compose exec daphne python manage.py migrate
+```docker-compose exec daphne python manage.py migrate```
 
 # 4. Create superuser
-docker-compose exec daphne python manage.py createsuperuser
+```docker-compose exec daphne python manage.py createsuperuser```
 
 # 5. Collect static files
-docker-compose exec daphne python manage.py collectstatic --noinput
+```docker-compose exec daphne python manage.py collectstatic --noinput```
 
 # 6. Access:
 # API: http://127.0.0.0:port/
