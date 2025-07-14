@@ -15,6 +15,7 @@ from datetime import timedelta
 from dotenv import load_dotenv
 import os
 load_dotenv()
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework_simplejwt.token_blacklist",
+    "channels",
 ]
 
 INSTALLED_APPS += PROJECT_APPS
@@ -90,6 +92,26 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'task_management.wsgi.application'
+ASGI_APPLICATION = "task_management.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+    },
+}
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_BEAT_SCHEDULE = {
+    'check_missed_tasks_every_minute': {
+        'task': 'apps.task.tasks.check_and_notify_missed_tasks',
+        'schedule': 60.0,  
+    },
+}
+
 
 
 # Database
@@ -141,6 +163,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = 'images/'
 
@@ -165,3 +188,5 @@ SIMPLE_JWT = {
 
 AUTH_USER_MODEL = "users.AppUser"
 
+
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")

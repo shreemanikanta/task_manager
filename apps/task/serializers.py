@@ -2,6 +2,9 @@ from rest_framework import serializers
 from .models import Task
 
 class TaskSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Task model.
+    """
     status = serializers.SerializerMethodField()
 
     class Meta:
